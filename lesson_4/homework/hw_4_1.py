@@ -9,8 +9,9 @@ from sys import argv
 def salary(time, stavka, premia):
     try:
         return time * stavka + premia
-    except ValueError as err:
+    except TypeError as err:
         print("Error: ", err)
 
 
-print(f"Salary - {salary(*map(int, argv[1:]))}")
+if __name__ == "__main__":
+    print(f"Salary - {salary(*map(int, argv[1:]))}")
