@@ -4,6 +4,24 @@ from datetime import datetime
 import requests
 from abc import ABC, abstractmethod
 
+class MyShinyIterator:
+    def __init__(self, point):
+        self.i = point.x
+        self.finish = point.x + 5
+        self.buf = self.i
+
+    def __next__(self):
+        self.i += 1
+        if self.i <= self.finish:
+            return self.i
+        else:
+            raise StopIteration("Итерация окончена")
+
+    def to_start(self):
+        self.i = self.buf
+
+    def __iter__(self):
+        return self
 
 class Point2D:
     """Двумерная точка"""
@@ -17,29 +35,55 @@ class Point2D:
     def __repr__(self):
         return f"координата x: {self.x}, координата y: {self.y}"
 
-    def __eq__(self, other):
-        return True if self.x == other.x and self.y == other.y else False
-
     def __add__(self, other):
-        return Point2D(self.x + other.x, self.y + other.y)
-
+        new_coord_x = self.x + other.x
+        new_coord_y = self.y + other.y
+        return Point2D(new_coord_x, new_coord_y)
 
     def __mul__(self, other):
-        return Point2D(self.x * other.x, self.y * other.y)
+        if type(other) == Point2D:
+            return Point2D(self.x * other.x, self.y * other.y)
+        elif type(other) == int:
+            return Point2D(self.x * other, self.y * other)
+        raise ValueError("Unsupported type for mult: ", type(other))
+
+    def __eq__(self, other):
+        return True if self.x is other.x and self.y is other.y else False
 
     def __iter__(self):
-        return (el for el in [1, 2])
-
-    def __iadd__(self, other):
-        self.x += other.x
-        self.y += other.y
+        return MyShinyIterator(self)
+    # def __iadd__(self, other):
+    #     self.x += other.x
+    #     self.y += other.y
 
     @property
     def get_very_hard_evaluation(self):
         return self.y + self.x
+    #
+    # def test(self, *args, **kwargs):
+    #     pass
 
-    def test(self, *args, **kwargs):
-        pass
+
+# point_2d = Point2D(100000, 2)
+# c = 1
+
+class MClass:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+# m_class_ex = MClass(100000, 2)
+# point_2d = Point2D(100000, 2)
+# point_2d_2 = Point2D(100000, 2)
+# # print(m_class_ex == point_2d)
+# print(sum([point_2d_2, point_2d]))
+
+
+
+
+
+
 
 
 class AllPointHeap:
@@ -123,11 +167,12 @@ class User:
     def __init__(self, field):
         self.field = field
 
-    @property
     def get_discount_status(self):
+        sleep(2)
         return requests.get("https://google.com")
 
-
+user = User(123)
+c = 1
 
 ###################################
 ############ ИТЕРАТОРЫ ############
@@ -140,15 +185,27 @@ from itertools import repeat, count
 from time import sleep
 
 my_list = [1, 2, 3]
+c = iter(range(10))
 my_dict = {1: "a", 2: "b", 3: "c"}
 my_set = {"lol", "kek", "cheburek"}
 
+point_2d = Point2D(100000, 2)
+i = iter(point_2d)
+# try:
+#     while True:
+#         print(next(i))
+# except StopIteration as err:
+#     pass
+
+
+def simple_gen(start, finish=5):
+    while start <= finish:
+        yield start
+        start += 1
+
 
 # простая петля
-# for element in my_set:
-#     print(element)
-
-# for element in my_dict:
+# for element in point_2d:
 #     print(element)
 
 # iterator = iter(my_list)
@@ -163,32 +220,6 @@ my_set = {"lol", "kek", "cheburek"}
 # print(9 in squares)
 # print(9 in squares)
 # print(next(squares))
-
-
-def simple_gen(start, finish=5):
-    while start <= finish:
-        yield start
-        start += 1
-
-
-class MyShinyIterator:
-    def __init__(self, start):
-        self.i = start
-        # self.buf = start
-
-    def __next__(self):
-        self.i += 1
-        if self.i <= 5:
-            return self.i
-        else:
-            raise StopIteration("Итерация окончена")
-
-    # def to_start(self):
-    #     self.i = self.buf
-
-    def __iter__(self):
-        c = 1
-        return self
 
 
 class TumbCollection:
@@ -211,7 +242,7 @@ class TumbCollection:
 # print("тумб второй проход")
 # for el in obj:
 #     print(el)
-
+#
 # print("************")
 # it = MyShinyIterator(start=2)
 # for el in it:
@@ -255,10 +286,10 @@ def square_all(numbers):
         yield n**2
 
 
-square_all_ex = (n**2 for n in numbers)
-print(9 in square_all_ex)
-print([x for x in square_all_ex])
-print(9 in square_all_ex)
+# square_all_ex = (n**2 for n in numbers)
+# print(9 in square_all_ex)
+# print([x for x in square_all_ex])
+# print(9 in square_all_ex)
 
 
 # как мы экономим память
