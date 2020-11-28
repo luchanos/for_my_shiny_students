@@ -40,7 +40,7 @@ class Animal(AbstractAnimal):
     approved_food_type: [Food]
 
     def __init__(self):
-        self.energy = self.max_energy
+        self.energy = self.__class__.max_energy
 
     def feed(self, food):
         if type(food) == self.approved_food_type:
@@ -49,7 +49,9 @@ class Animal(AbstractAnimal):
             raise WrongTypeFoodError
 
     def _method_to_spent_energy(self):
-        self.energy -= self.spent_energy
+        self.energy -= self.__class__.spent_energy
+        if self.energy <= 0:
+            del self
 
 
 class WrongTypeFoodError(Exception):
@@ -76,6 +78,8 @@ class Tiger(Animal):
             self.energy = self.energy + (self.energy + 20) % self.max_energy
         else:
             self.energy -= 20
+            if self.energy <= 0:
+                del self
 
     def run(self):
         super()._method_to_spent_energy()
