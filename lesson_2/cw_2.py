@@ -19,25 +19,34 @@ https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная мет
 - работа с регистрами аппаратуры
 
 И:
-1000
-1010
-1000
-"""
-a = 9999999
-print("Number in dec: ", a)
-print("Number in bin: ", bin(a))
-print("Number in oct: ", oct(a))
-print("Number in hex: ", hex(a))
-print(int((hex(a)), 16))
-print(int((oct(a)), 8))
+0100
+1001
 
-# # СДВИГ
+
+0000
+"""
+# print(int(bin(8), 2))
+# a = hex(8)
+# b = oct(10)
+# a_d = int(a, 16)
+# print(a_d)
+
+
+# a = 9999999
+# print("Number in dec: ", a)
+# print("Number in bin: ", bin(a))
+# print("Number in oct: ", oct(a))
+# print("Number in hex: ", hex(a))
+# print(int((hex(a)), 16))
+# print(int((oct(a)), 8))
+
+# СДВИГ
 # a = 3
-# a = a << 1
+# a = a << 4
 # print(a)
 # a = a >> 1
 # print(a)
-#
+
 # """
 # БАЙТЫ И BYTEARRAY.
 # ПЕРВЫЕ НЕИЗМЕНЯЕМЫЕ, ВТОРЫЕ - ДА
@@ -46,65 +55,80 @@ print(int((oct(a)), 8))
 # print(b)
 # print(chr(123), chr(124), chr(125))  # берем символ из таблицы ASCII
 # print(ord("{"), ord("|"), ord("}"))  # получаем порядок числа по таблице ASCII
-#
+
+
+
+
+
 # """СТРОКИ - НЕИЗМЕНЯЕМЫЙ ТИП
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/stroki-funkcii-i-metody-strok.html"""
-# test_string = "ThiS Is Test STriNg"
+# test_string = "40"
 # print(test_string)
-# print("Make all letter in uppercase", test_string.upper())
+# print("Make all letter in uppercase", test_string.upper(), test_string)
 # print("Make all letter in lowercase", test_string.lower())
 # print("Make first letter in uppercase", test_string.capitalize())
 # print("Is digit:", test_string.isdigit())
-#
+
 # # ЧТО МОЖЕМ СДЕЛАТЬ:
 # s = "first" + "second"
 # print(s)
 # print(s * 3)
 # print(s[0], s[1], s[2], s[3], s[4])
-#
-# """СРЕЗЫ - ЭТО КРАЕУГОЛЬНЫЙ КАМЕНЬ ПИТОНА
-# Общая формула среза: [start:finish:step]"""
-# s = '0123456789'
+
+"""СРЕЗЫ - ЭТО КРАЕУГОЛЬНЫЙ КАМЕНЬ ПИТОНА
+Общая формула среза: [start:finish:step]"""
+yaschik = '0123456789'
 # print(s[1::2])
 # print(s[::2])
-# print(s[1:5:2])
+# print(s[1:2])
 #
 # # БЫСТРЫЙ РЕВЕРС
+# print(s[-1])
 # print(s[::-1])
 # print(reversed(s))
-#
+
+
 # """ЦИКЛ FOR ДЛЯ ОБХОДА ПОСЛЕДОВАТЕЛЬНОСТЕЙ"""
-# for x in s:
-#     print(x)
-#
-# # аналог
+# for apple in yaschik:
+#     print(apple)
+
+# аналог
 # cnt = 0
 # while len(s) > cnt:
 #     print(s[cnt])
 #     cnt += 1
 #
-# # РАЗБИЕНИЕ СТРОКИ НА ЭЛЕМЕНТЫ СПИСКА
+# РАЗБИЕНИЕ СТРОКИ НА ЭЛЕМЕНТЫ СПИСКА
 # s = "some test string"
 # l = s.split()
 # print(l)
-#
+
+# print(list("listr"))
 # s = "some, test - string"
 # l = s.split(",")
 # print(l)
 #
 # # ОБРАТНАЯ ОПЕРАЦИЯ
 # l = ["aha", "ha", "haha"]
-# print("!!!".join(l))
+# print(" ".join(l))
 #
 # """
 # КОЛЛЕКЦИИ.
 # СПИСКИ - ИЗМЕНЯЕМЫЕ
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/spiski-list-funkcii-i-metody-spiskov.html"""
-# l1 = [1, 2, 3, 4, 5]
-# l2 = [True, False, 1, 2, 3]
-# l3 = ['t', 'e', 's', 't']
-# print(l2)
+l1 = [2, 3, 4, 5]
+l2 = [True, False, 1, 2, 3]
+l3 = ['t', 'e', 's', 't']
+# print(True in l1)
+
+# l4 = [l1, l2, l3]
 #
+# print(l4)
+#
+# l2[1] = 'ANOTHER VAL'
+#
+# print(l4)
+
 # # ОБЪЕДИНЕНИЕ СПИСКОВ
 # print(l1 + l2 + l3)
 # print(l2.index(0))  # ВАЖНЫЙ МОМЕНТ: False/True и 0 - это одно и то же для index
@@ -130,7 +154,9 @@ print(int((oct(a)), 8))
 # a, b = b, a
 # print(a, b)
 #
-# t = (1, 2, 3, 4)
+# t = ([1, 2], 3, 4)
+# t[0][1] = 'dfdsfgdfg'
+# print(t)
 #
 # # ЗАЧЕМ??? ДЛЯ БЕЗОПАСНОСТИ.
 #
@@ -144,12 +170,13 @@ print(int((oct(a)), 8))
 # МНОЖЕСТВА - ИЗМЕНЯЕМЫЕ
 # МЕТОДЫ - https://pythonworld.ru/tipy-dannyx-v-python/mnozhestva-set-i-frozenset.html"""
 # a = {1, 2, 3, 4, 5}
+# print(a)
 # # ЗАЧЕМ? ЕСЛИ НУЖНО ДЕРЖАТЬ УНИКАЛЬНЫЕ ЭЛЕМЕНТЫ И НЕ ВАЖЕН ПОРЯДОК
 # # для неизменяемости нужно использовать frozenset
 #
 # # УНИКАЛИЗАТОР
-# l = [1, 1, 1, 2, 2, 2]
-# print(set(l))  # на собеседовании не прокатит))
+# l = (1, 1, 1, 2, 2, 2)
+# print(tuple(set(l)))  # на собеседовании не прокатит))
 #
 #
 # """
@@ -159,11 +186,11 @@ print(int((oct(a)), 8))
 # # ЗАЧЕМ??? ЭТО ОЧЕНЬ СИЛЬНЫЙ ИНСТРУМЕНТ ДЛЯ ХРАНЕНИЯ ИНФОРМАЦИИ, А ТАКЖЕ МОЖЕТ ИСПОЛЬЗОВАТЬСЯ В НЕКОТОРЫХ
 # # СЛУЧАЯХ, КАК АЛЬТЕРНАТИВА УСЛОВНЫМ ОПЕРАТОРАМ
 #
-# some_dict = {"name": "Nikolai",
-#              "surname": "Sviridov",
-#              "position": "developer"}
-#
-# print(some_dict["name"])
+some_dict = {(1, 2, 3): "Nikolai",
+             "surname": "Sviridov",
+             "position": "developer"}
+
+# print(some_dict[(1, 2, 3)])
 # print(len(some_dict))
 #
 # # БОГАТЫРСКИЙ КАМЕНЬ
@@ -174,8 +201,8 @@ print(int((oct(a)), 8))
 #     print("Lose life")
 # elif decision == "straight":
 #     print("Lose mind")
-#
-#
+
+
 # story_stone = {
 #     "left": "Lose horse",
 #     "right": "Lose life",
@@ -190,17 +217,24 @@ print(int((oct(a)), 8))
 #
 # """NoneType"""
 # c = None
-# print(c, type(c))
+# print(print(c, type(c)))
 #
 # """Exceptions - исключение. Нужны для обработки внештатных ситуаций"""
-# try:
-#     1 / 0
-# except Exception as err:
-#     print("Error!!!", err)
-#
+try:
+    1 / 0
+except TypeError as err:
+    print("Error!!!", err)
+
+
 # a = 1
 # b = 2
 # # ТЕРНАРНЫЙ ОПЕРАТОР
+# if a == 3:
+#     result = 123
+# else:
+#     result = 5
+
+
 # result = 123 if a == 3 else 5
 # print(result)
 #
