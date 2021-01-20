@@ -1,3 +1,4 @@
+
 class Pistolet:
 
     def __init__(self, weight, max_capacity, color):
@@ -5,11 +6,17 @@ class Pistolet:
         self.color = color
         self.max_capacity = max_capacity
 
+    def __new__(cls, *args, **kwargs):
+        c = 1
+
     def __call__(self, *args, **kwargs):
         print(self._shoot())
 
     def _shoot(self):
         return "ОГОНЬ НА ПОРАЖЕНИЕ!"
+
+
+p = Pistolet(123, 123, 'red')
 
 
 class Automat:
@@ -29,5 +36,5 @@ class ToyPistol(Pistolet):
         print(super()._shoot())
         return "АВТОМАТИЧЕСКИЙ ОГОНЬ НА ПОРАЖЕНИЕ!"
 
-toy_pistol = ToyPistol("water", 1, 12, "water")
-toy_pistol()
+# toy_pistol = ToyPistol("water", 1, 12, "water")
+# toy_pistol()

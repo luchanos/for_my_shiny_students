@@ -1,7 +1,52 @@
-from io import BufferedReader
+from io import BufferedReader, TextIOWrapper
 
-with open("testfile.txt", "w") as file_object:
-    pass
+
+# class SimpleClass:
+#     def __enter__(self):
+#         print("зашли в энтер")
+#
+#     def __exit__(self, exc_type, exc_val, exc_tb):
+#         print("зашли в экзит")
+
+
+# simple_class = SimpleClass()
+#
+# with simple_class:
+#     print("работаем!")
+#     raise Exception("ОШИБКА ОШИБОК!!!")
+#
+# print("закончили совсем работать")
+
+
+
+
+# f_o = open("testfile.txt", "r")
+# f_o.seek(12)
+# print(f_o.tell())
+# f_o.readline()
+# print(f_o.tell())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def test_func():
@@ -19,8 +64,8 @@ def second_func():
 
 
 # second_func()
-file_object_2 = open("testfile.txt", "w")
-print(file_object_2.tell())
+# file_object_2 = open("testfile.txt", "w")
+# print(file_object_2.tell())
 # file_object_2.write('sdasf')
 # x = [open("testfile.txt", "w") for _ in range(102300)]
 
@@ -31,18 +76,63 @@ print(file_object_2.tell())
 
 
 
-a = 1
-b = 2
-
-BufferedReader
-
-
-# class SomeClassWithContext:
-#     def __enter__(self):
-#         print("Этот метод запускается, когда мы передаём объект в менеджер контекста")
+# a = 1
+# b = 2
 #
-#     def __exit__(self, exc_type, exc_val, exc_tb):
-#         print("Этот метод запускается, когда мы заканчиваем работу с объектом в менеджере контекста")
+# BufferedReader
+
+
+
+
+
+
+
+
+
+class SomeClassWithContext:
+    def __enter__(self):
+        print("Этот метод запускается, когда мы передаём объект в менеджер контекста")
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Этот метод запускается, когда мы заканчиваем работу с объектом в менеджере контекста")
+        if exc_type:
+            print("Случиласть ошибка!!!")
+
+    def some_meth(self):
+        pass
+
+# c = 1
+# some_obj = SomeClassWithContext()
+# with some_obj:
+#     print("какая-то логика")
+#     some_obj.some_meth()
+#     raise ValueError("Ошибка!!!", 1, 2, [123123412341234, 232345345])
+#     c = 1
+# c = 1
+
+
+
+
+
+# file_object = open("testfile.txt", "w")
+# with file_object:
+#     pass
+
+# with SomeClassWithContext():
+#     print("контекст")
+#     print("контекст")
+#     print("контекст")
+#     print("контекст")
+#     raise Exception("Error message", 'asfdsf', 'asdasdf', 'asdadsf')
+#     print("контекст")
+#     print("контекст")
+#     print("контекст")
+
+
+
+
+
+
 
 # some_io_wrapper = open("testfile.txt", "w")
 #
@@ -63,12 +153,12 @@ BufferedReader
 
 
 # Пример с плитой
-class AutomaticPlita():
-    def __enter__(self):
-        print("Плита автоматически включилась")
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Плита автоматически выключилась")
+# class AutomaticPlita():
+#     def __enter__(self):
+#         print("Плита автоматически включилась")
+#
+#     def __exit__(self, exc_type, exc_val, exc_tb):
+#         print("Плита автоматически выключилась")
 
 
 # time_to_cook = 5

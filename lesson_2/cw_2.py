@@ -1,4 +1,6 @@
 """ТИПЫ ДАННЫХ"""
+from copy import deepcopy
+
 
 tseloe = 1
 with_point = 1.2
@@ -18,17 +20,23 @@ https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная мет
 от арифметических операций, где нужно учитывать перенос)
 - работа с регистрами аппаратуры
 
-И:
-0100
-1001
+ИЛИ:
+0101 - это число 5
+1001  - это число 9 в 10ной с.с.
+1101
 
+True or False = True
 
-0000
 """
+# print(5 | 9)
+
 # print(int(bin(8), 2))
-# a = hex(8)
-# b = oct(10)
-# a_d = int(a, 16)
+# print(int(bin(8), 2))
+# a = hex(14)
+# b = oct(14)
+# print(a, b)
+# a_d = int('0100', 2)
+# print(a_d)
 # print(a_d)
 
 
@@ -40,30 +48,26 @@ https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная мет
 # print(int((hex(a)), 16))
 # print(int((oct(a)), 8))
 
+"""101"""
 # СДВИГ
-# a = 3
-# a = a << 4
+# a = 5
+# a = a << 10
 # print(a)
 # a = a >> 1
 # print(a)
 
-# """
-# БАЙТЫ И BYTEARRAY.
-# ПЕРВЫЕ НЕИЗМЕНЯЕМЫЕ, ВТОРЫЕ - ДА
-# БОЛЬШЕ ИНФО - https://pythonworld.ru/tipy-dannyx-v-python/bajty-bytes-i-bytearray.html"""
+"""
+БАЙТЫ И BYTEARRAY.
+ПЕРВЫЕ НЕИЗМЕНЯЕМЫЕ, ВТОРЫЕ - ДА
+БОЛЬШЕ ИНФО - https://pythonworld.ru/tipy-dannyx-v-python/bajty-bytes-i-bytearray.html"""
 # b = "Пример".encode("UTF-8")
 # print(b)
 # print(chr(123), chr(124), chr(125))  # берем символ из таблицы ASCII
 # print(ord("{"), ord("|"), ord("}"))  # получаем порядок числа по таблице ASCII
 
-
-
-
-
 # """СТРОКИ - НЕИЗМЕНЯЕМЫЙ ТИП
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/stroki-funkcii-i-metody-strok.html"""
-# test_string = "40"
-# print(test_string)
+# test_string = "приВет, Андрей! Ну обними меня скорей!"
 # print("Make all letter in uppercase", test_string.upper(), test_string)
 # print("Make all letter in lowercase", test_string.lower())
 # print("Make first letter in uppercase", test_string.capitalize())
@@ -77,24 +81,26 @@ https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная мет
 
 """СРЕЗЫ - ЭТО КРАЕУГОЛЬНЫЙ КАМЕНЬ ПИТОНА
 Общая формула среза: [start:finish:step]"""
-yaschik = '0123456789'
+# s = '0123456789'
 # print(s[1::2])
 # print(s[::2])
 # print(s[1:2])
-#
+
 # # БЫСТРЫЙ РЕВЕРС
 # print(s[-1])
-# print(s[::-1])
+# print(s[::-2])
 # print(reversed(s))
 
 
 # """ЦИКЛ FOR ДЛЯ ОБХОДА ПОСЛЕДОВАТЕЛЬНОСТЕЙ"""
-# for apple in yaschik:
-#     print(apple)
+# for x in reversed(s):
+#     print(x)
+#     print(x * 10)
+#     print("Вы великолепны")
 
 # аналог
 # cnt = 0
-# while len(s) > cnt:
+# while cnt < len(s):
 #     print(s[cnt])
 #     cnt += 1
 #
@@ -116,31 +122,33 @@ yaschik = '0123456789'
 # КОЛЛЕКЦИИ.
 # СПИСКИ - ИЗМЕНЯЕМЫЕ
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/spiski-list-funkcii-i-metody-spiskov.html"""
-l1 = [2, 3, 4, 5]
-l2 = [True, False, 1, 2, 3]
+l1 = [False, 2, 3, 4, 5]
+l2 = [True, False]
 l3 = ['t', 'e', 's', 't']
-# print(True in l1)
+# print('t' in l3)
+# print('tes' in 'test')
+# print(l1[2])
 
 # l4 = [l1, l2, l3]
-#
 # print(l4)
 #
-# l2[1] = 'ANOTHER VAL'
-#
+# # l4[1] = 'ANOTHER VAL'
+# l2[1] = 'SOME VALUE'
+# l4[1][0] = 'XXX'
 # print(l4)
+# print(l2)
 
 # # ОБЪЕДИНЕНИЕ СПИСКОВ
-# print(l1 + l2 + l3)
-# print(l2.index(0))  # ВАЖНЫЙ МОМЕНТ: False/True и 0 - это одно и то же для index
+# l5 = l1 + l2 + l3
+# print(l5.index(0))  # ВАЖНЫЙ МОМЕНТ: False/True и 0 - это одно и то же для index
 # print(l2.index(3))
 #
 # # ДОБАВЛЕНИЕ В СПИСОК
-# l2.insert(3, "SOME VALUE")  # ДОБАВЛЕНИЕ В ПОЗИЦИЮ
+# l2.insert(1, "SOME VALUE")  # ДОБАВЛЕНИЕ В ПОЗИЦИЮ
 # print(l2)
 # l2.append("ONE MORE ELEMENT")
 # print(l2)
-#
-# # ПОЛУЧИТЬ ЭЛЕМЕНТ ИЗ СПИСКА С ЕГО УДАЛЕНИЕМ ИЗ НЕГО
+# # # ПОЛУЧИТЬ ЭЛЕМЕНТ ИЗ СПИСКА С ЕГО УДАЛЕНИЕМ ИЗ НЕГО
 # elem = l2.pop(2)
 # print(elem, l2)
 #
@@ -155,14 +163,15 @@ l3 = ['t', 'e', 's', 't']
 # print(a, b)
 #
 # t = ([1, 2], 3, 4)
-# t[0][1] = 'dfdsfgdfg'
+# t[0] = 'dfdsfgdfg'
 # print(t)
 #
 # # ЗАЧЕМ??? ДЛЯ БЕЗОПАСНОСТИ.
 #
 # # ПЕРЕСТАВИТЬ ЭЛЕМЕНТЫ В ЛИСТЕ
 # l = [1, 2, 3, 4]
-# l[0], l[3] = l[3], l[0]
+# print(l.index(3), l.index(4))
+# l[2], l[3] = l[3], l[2]
 # print(l)
 #
 # """
@@ -170,6 +179,8 @@ l3 = ['t', 'e', 's', 't']
 # МНОЖЕСТВА - ИЗМЕНЯЕМЫЕ
 # МЕТОДЫ - https://pythonworld.ru/tipy-dannyx-v-python/mnozhestva-set-i-frozenset.html"""
 # a = {1, 2, 3, 4, 5}
+# b = {'s', 'd', 'e'}
+# print(a.update(b))
 # print(a)
 # # ЗАЧЕМ? ЕСЛИ НУЖНО ДЕРЖАТЬ УНИКАЛЬНЫЕ ЭЛЕМЕНТЫ И НЕ ВАЖЕН ПОРЯДОК
 # # для неизменяемости нужно использовать frozenset
@@ -186,13 +197,13 @@ l3 = ['t', 'e', 's', 't']
 # # ЗАЧЕМ??? ЭТО ОЧЕНЬ СИЛЬНЫЙ ИНСТРУМЕНТ ДЛЯ ХРАНЕНИЯ ИНФОРМАЦИИ, А ТАКЖЕ МОЖЕТ ИСПОЛЬЗОВАТЬСЯ В НЕКОТОРЫХ
 # # СЛУЧАЯХ, КАК АЛЬТЕРНАТИВА УСЛОВНЫМ ОПЕРАТОРАМ
 #
-some_dict = {(1, 2, 3): "Nikolai",
+some_dict = {"name": "Nikolai",
              "surname": "Sviridov",
              "position": "developer"}
 
-# print(some_dict[(1, 2, 3)])
+# print(some_dict["name"])
 # print(len(some_dict))
-#
+
 # # БОГАТЫРСКИЙ КАМЕНЬ
 # decision = input("Enter direction: ").lower()
 # if decision == "left":
@@ -203,11 +214,11 @@ some_dict = {(1, 2, 3): "Nikolai",
 #     print("Lose mind")
 
 
-# story_stone = {
-#     "left": "Lose horse",
-#     "right": "Lose life",
-#     "straight": "Lose mind"
-# }
+story_stone = {
+    "left": "Lose horse",
+    "right": "Lose life",
+    "straight": "Lose mind"
+}
 # decision = input("Enter direction: ").lower()
 # print(story_stone[decision])
 # print(story_stone.get(decision))  # ВАЖНО ПОНИМАТЬ РАЗНИЦУ
@@ -222,20 +233,20 @@ some_dict = {(1, 2, 3): "Nikolai",
 # """Exceptions - исключение. Нужны для обработки внештатных ситуаций"""
 try:
     1 / 0
-except TypeError as err:
+except (TypeError, KeyError) as err:
     print("Error!!!", err)
 
 
-# a = 1
-# b = 2
-# # ТЕРНАРНЫЙ ОПЕРАТОР
-# if a == 3:
-#     result = 123
-# else:
-#     result = 5
+a = 1
+b = 2
+# ТЕРНАРНЫЙ ОПЕРАТОР
+if a == 3:
+    result = 123
+else:
+    result = 5
 
 
-# result = 123 if a == 3 else 5
+result = 123 if a == 3 else 5
 # print(result)
 #
 # """

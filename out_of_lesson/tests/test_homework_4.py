@@ -7,3 +7,4 @@ import pytest
                                                             (100, 40, 0, 4000)])
 def test_first_task(time, stavka, premia, expected):
     assert expected == salary(time, stavka, premia)
+

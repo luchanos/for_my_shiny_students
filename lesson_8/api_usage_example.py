@@ -3,8 +3,6 @@ from requests import request
 from envparse import env
 
 # Получаем множество прокомментировавших на Ютубе
-vk_comments = env('CFG')
-c = 1
 youtube_comments = request(method='GET', url=env('YT_URL'))
 youtube_comments = youtube_comments.json()
 youtube_commentators = {list(youtube_comments['items'][i].values())[3]['topLevelComment']

@@ -4,11 +4,14 @@ from datetime import datetime
 import requests
 from abc import ABC, abstractmethod
 
+from lesson_6.cw_6 import Pistolet
+
+
 class MyShinyIterator:
-    def __init__(self, point):
-        self.i = point.x
-        self.finish = point.x + 5
-        self.buf = self.i
+    def __init__(self, finish):
+        self.i = 0
+        self.finish = finish
+    #     self.buf = self.i
 
     def __next__(self):
         self.i += 1
@@ -18,10 +21,29 @@ class MyShinyIterator:
             raise StopIteration("Итерация окончена")
 
     def to_start(self):
-        self.i = self.buf
+        self.i = 0
 
     def __iter__(self):
         return self
+
+
+class CustomClass:
+    def __iter__(self):
+        return MyShinyIterator(3)
+
+#
+# cc = CustomClass()
+#
+# it = iter(cc)
+#
+# print(next(it))
+# print(next(it))
+# it.to_start()
+# print(next(it))
+# print(next(it))
+
+
+
 
 class Point2D:
     """Двумерная точка"""
@@ -184,13 +206,13 @@ from itertools import repeat, count
 # Итерируемые объекты (iterable) — это любые объекты, предоставляющий возможность поочерёдного прохода по циклу.
 from time import sleep
 
-my_list = [1, 2, 3]
-c = iter(range(10))
-my_dict = {1: "a", 2: "b", 3: "c"}
-my_set = {"lol", "kek", "cheburek"}
+# my_list = [1, 2, 3]
+# c = iter(range(10))
+# my_dict = {1: "a", 2: "b", 3: "c"}
+# my_set = {"lol", "kek", "cheburek"}
 
-point_2d = Point2D(100000, 2)
-i = iter(point_2d)
+# point_2d = Point2D(100000, 2)
+# i = iter(point_2d)
 # try:
 #     while True:
 #         print(next(i))
@@ -278,12 +300,12 @@ class SquareAll:
         return self
 
 
-numbers = [1, 2, 3, 4, 5]
-
-
-def square_all(numbers):
-    for n in numbers:
-        yield n**2
+# numbers = [1, 2, 3, 4, 5]
+#
+#
+# def square_all(numbers):
+#     for n in numbers:
+#         yield n**2
 
 
 # square_all_ex = (n**2 for n in numbers)
@@ -297,8 +319,20 @@ def square_all(numbers):
 # print(type(lots_of_fours))
 # print(f"lots_of_fours занимает в памяти {sys.getsizeof(lots_of_fours)} байт")
 
-# lots_of_fours_via_list = [4] * 100_000_000
+# lots_of_fours_via_list = [4] * 1_000_000_000  # 8000000064
 # print(f"lots_of_fours занимает в памяти {sys.getsizeof(lots_of_fours_via_list)} байт")
+
+def rr():
+    n = 0
+    while n <= 10:
+        yield n
+        n += 1
+
+
+l = rr()
+print(5 in l)
+for el in l:
+    print(el)
 
 # бесконечно длинный итератор
 # for n in count():
