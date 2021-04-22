@@ -2,6 +2,9 @@ from random import choice
 from requests import request
 from envparse import env
 
+a = request(method="GET", url="http://google.com")
+c = 1
+
 # Получаем множество прокомментировавших на Ютубе
 youtube_comments = request(method='GET', url=env('YT_URL'))
 youtube_comments = youtube_comments.json()

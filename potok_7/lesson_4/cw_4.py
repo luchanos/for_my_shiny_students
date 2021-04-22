@@ -84,27 +84,27 @@ from datetime import datetime as dt
 # print((x for x in range(10)))
 
 
-# def my_range(a):
-#     print("начинаю работу по генерации чисел")
-#     cnt = 0
-#     while cnt < a:
-#         yield cnt
-#         cnt += 1
-#     yield 'test'
-#     yield 'string'
-#     print("Закончили!!!")
+def my_range(a):
+    print("начинаю работу по генерации чисел")
+    cnt = 0
+    while cnt < a:
+        yield cnt
+        cnt += 1
+    yield 'test'
+    yield 'string'
+    print("Закончили!!!")
 #
 #
 # def my():
 #     return 1
 
 
-# start = dt.now()
-# print(f"Start working at: {start}")
+start = dt.now()
+print(f"Start working at: {start}")
 # a = [x for x in range(100_000_000)]
-# a = my_range(3)
-# print(f"Finish at: {dt.now()}. Working time: {dt.now() - start}")
-# print(f"Size of object: {sys.getsizeof(a)}")
+a = my_range(3)
+print(f"Finish at: {dt.now()}. Working time: {dt.now() - start}")
+print(f"Size of object: {sys.getsizeof(a)}")
 
 # print(next(a))
 # print(next(a))
@@ -128,19 +128,19 @@ from datetime import datetime as dt
 #         return str(a) * 10
 
 
-a = [0, 1, 2, 3]
+# a = [0, 1, 2, 3]
 # res = reduce(summarize, a)
 # print(res)
 
 # print(list(map(f, a)))
 # print(list(filter(f, a)))
 
-cycle, count
+# cycle, count
 
 # for x in cycle(a):
 #     print(x)
 #     sleep(.5)
 
-for x in count(100, 105):
-    sleep(.5)
-    print(x)
+# for x in count(100, 105):
+#     sleep(.5)
+#     print(x)

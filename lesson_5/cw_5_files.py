@@ -1,6 +1,7 @@
 from io import TextIOWrapper
 
 l = ["Первая строка\n", "Первая строка\n", "Первая строка\n"]
+
 # try:
 #     some_io_wrapper = open("sample.pdf", "rb")
 #     raise ValueError
@@ -13,13 +14,9 @@ l = ["Первая строка\n", "Первая строка\n", "Первая
 #
 # while True:
 #     with open("testfile.txt", "w") as f_o:
-#         pass
 #
 # while True:
 #     open("testfile.txt", "w")
-
-
-
 
 
 
@@ -96,15 +93,15 @@ logger.error("произошла страшная ошибка!")
 import json
 #
 # # получаем данные из json
-tw = open("t.txt", "w")
-with open("json_example.json", "w") as json_obj:
-    # data = json.load(json_obj)
-    # print(data)
-    some_data = {"user_id": 123123,
-    "position": "devloper",
-    "city": "Moscow",
-                 "inner_dict": {"user_id": 123123,
-    "position": "devloper",
-                 "city": "Moscow"}}
-    s = json.dumps(some_data)
-    print(s)
+# tw = open("t.txt", "w")
+with open("json_example./Users/nnsviridov/PycharmProjects/for_my_shiny_students/potok_7/lesson_5/json_example.json", "r") as json_obj:
+    data = json.load(json_obj)
+    print(data)
+    # some_data = {"user_id": 123123,
+    # "position": "devloper",
+    # "city": "Moscow",
+    #              "inner_dict": {"user_id": 123123,
+    # "position": "devloper",
+    #              "city": "Moscow"}}
+    # s = json.dumps(some_data)
+    # print(s)

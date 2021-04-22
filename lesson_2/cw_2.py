@@ -7,6 +7,7 @@ with_point = 1.2
 complex_num = complex(1, 2)  # зачем? для специфических задач, конечно же)
 # вдруг вы захотите посчтитать вольт-амперную характеристику?)
 
+
 """ПОБИТОВЫЕ ОПЕРАЦИИ
 https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная методичка
 
@@ -23,13 +24,20 @@ https://www.math.spbu.ru/user/nlebedin/bit_operat_2017.pdf - годная мет
 ИЛИ:
 0101 - это число 5
 1001  - это число 9 в 10ной с.с.
-1101
+1101 - это число 13
 
 True or False = True
 
 """
 # print(5 | 9)
+# a_d = int('1101', 2)
+# print(a_d)
+# print(13 >> 1)
+# _______1101
+# ______11010
+# рекомендую прочитать книгу КОД
 
+# print(bin(8))
 # print(int(bin(8), 2))
 # print(int(bin(8), 2))
 # a = hex(14)
@@ -64,7 +72,7 @@ True or False = True
 # print(b)
 # print(chr(123), chr(124), chr(125))  # берем символ из таблицы ASCII
 # print(ord("{"), ord("|"), ord("}"))  # получаем порядок числа по таблице ASCII
-
+# print("123"  "adfsadfa")
 # """СТРОКИ - НЕИЗМЕНЯЕМЫЙ ТИП
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/stroki-funkcii-i-metody-strok.html"""
 # test_string = "приВет, Андрей! Ну обними меня скорей!"
@@ -82,24 +90,27 @@ True or False = True
 """СРЕЗЫ - ЭТО КРАЕУГОЛЬНЫЙ КАМЕНЬ ПИТОНА
 Общая формула среза: [start:finish:step]"""
 # s = '0123456789'
+# print(s[2:9])
 # print(s[1::2])
 # print(s[::2])
-# print(s[1:2])
+# print(s[1:200000000000000:20])
 
 # # БЫСТРЫЙ РЕВЕРС
 # print(s[-1])
-# print(s[::-2])
-# print(reversed(s))
+# print(s[::-1])
+# print(list(reversed(s)))
 
 
 # """ЦИКЛ FOR ДЛЯ ОБХОДА ПОСЛЕДОВАТЕЛЬНОСТЕЙ"""
-# for x in reversed(s):
+# s = "SOME TEST STRING"
+# for x in s[3:10:2].lower():
 #     print(x)
-#     print(x * 10)
-#     print("Вы великолепны")
+# print(x * 10)
+# print("Вы великолепны")
 
 # аналог
 # cnt = 0
+# print(len(s))
 # while cnt < len(s):
 #     print(s[cnt])
 #     cnt += 1
@@ -116,20 +127,23 @@ True or False = True
 #
 # # ОБРАТНАЯ ОПЕРАЦИЯ
 # l = ["aha", "ha", "haha"]
-# print(" ".join(l))
-#
+# print("".join(l))
+
 # """
 # КОЛЛЕКЦИИ.
 # СПИСКИ - ИЗМЕНЯЕМЫЕ
 # ПОЛНЫЙ СПИСОК МЕТОДОВ - https://pythonworld.ru/tipy-dannyx-v-python/spiski-list-funkcii-i-metody-spiskov.html"""
-l1 = [False, 2, 3, 4, 5]
+l1 = [1, 2, 3, 4, 5]
 l2 = [True, False]
 l3 = ['t', 'e', 's', 't']
 # print('t' in l3)
+# print(True in l1)
+# print(l3.count('t'))
 # print('tes' in 'test')
 # print(l1[2])
 
-# l4 = [l1, l2, l3]
+# l4 = [l1[:], l2[:], l3[:]]  # кладём копии листов
+# l4 = [l1, l2, l3]  # кладём ссылки на листы
 # print(l4)
 #
 # # l4[1] = 'ANOTHER VAL'
@@ -140,7 +154,9 @@ l3 = ['t', 'e', 's', 't']
 
 # # ОБЪЕДИНЕНИЕ СПИСКОВ
 # l5 = l1 + l2 + l3
-# print(l5.index(0))  # ВАЖНЫЙ МОМЕНТ: False/True и 0 - это одно и то же для index
+# l5.append('some element')
+# print(l5)
+# print(l5.index('some element'))  # ВАЖНЫЙ МОМЕНТ: False/True и 0/1 - это одно и то же для index
 # print(l2.index(3))
 #
 # # ДОБАВЛЕНИЕ В СПИСОК
@@ -148,8 +164,12 @@ l3 = ['t', 'e', 's', 't']
 # print(l2)
 # l2.append("ONE MORE ELEMENT")
 # print(l2)
-# # # ПОЛУЧИТЬ ЭЛЕМЕНТ ИЗ СПИСКА С ЕГО УДАЛЕНИЕМ ИЗ НЕГО
-# elem = l2.pop(2)
+# ПОЛУЧИТЬ ЭЛЕМЕНТ ИЗ СПИСКА С ЕГО УДАЛЕНИЕМ ИЗ НЕГО
+# elem = l2.pop(1)
+# spartans = ['peasant', 'peasant', 'peasant', 'LEONIDAS', 'peasant', 'peasant', 'peasant']
+# king_of_sparta = spartans.pop(spartans.index('LEONIDAS'))
+# print(king_of_sparta, spartans)
+# print(l2)
 # print(elem, l2)
 #
 #
@@ -163,7 +183,7 @@ l3 = ['t', 'e', 's', 't']
 # print(a, b)
 #
 # t = ([1, 2], 3, 4)
-# t[0] = 'dfdsfgdfg'
+# t[0][0] = 'dfdsfgdfg'
 # print(t)
 #
 # # ЗАЧЕМ??? ДЛЯ БЕЗОПАСНОСТИ.
@@ -178,16 +198,19 @@ l3 = ['t', 'e', 's', 't']
 # КОЛЛЕКЦИИ.
 # МНОЖЕСТВА - ИЗМЕНЯЕМЫЕ
 # МЕТОДЫ - https://pythonworld.ru/tipy-dannyx-v-python/mnozhestva-set-i-frozenset.html"""
-# a = {1, 2, 3, 4, 5}
+# l1 = [1, 2, 3]
+# l2 = [1, 2, 3]
+# a = {1, 2, 3, 4, 5, 5, 5, 5}
 # b = {'s', 'd', 'e'}
 # print(a.update(b))
+# s = set()  # пустое множество! ТАК И ТОЛЬКО ТАК! {} - это пустой словарь!
 # print(a)
 # # ЗАЧЕМ? ЕСЛИ НУЖНО ДЕРЖАТЬ УНИКАЛЬНЫЕ ЭЛЕМЕНТЫ И НЕ ВАЖЕН ПОРЯДОК
 # # для неизменяемости нужно использовать frozenset
 #
 # # УНИКАЛИЗАТОР
 # l = (1, 1, 1, 2, 2, 2)
-# print(tuple(set(l)))  # на собеседовании не прокатит))
+# print(tuple(set(l)))  # на собеседовании в Яндекс не прокатит))
 #
 #
 # """
@@ -196,15 +219,16 @@ l3 = ['t', 'e', 's', 't']
 # МЕТОДЫ - https://pythonworld.ru/tipy-dannyx-v-python/slovari-dict-funkcii-i-metody-slovarej.html"""
 # # ЗАЧЕМ??? ЭТО ОЧЕНЬ СИЛЬНЫЙ ИНСТРУМЕНТ ДЛЯ ХРАНЕНИЯ ИНФОРМАЦИИ, А ТАКЖЕ МОЖЕТ ИСПОЛЬЗОВАТЬСЯ В НЕКОТОРЫХ
 # # СЛУЧАЯХ, КАК АЛЬТЕРНАТИВА УСЛОВНЫМ ОПЕРАТОРАМ
-#
+
 some_dict = {"name": "Nikolai",
              "surname": "Sviridov",
              "position": "developer"}
 
+
 # print(some_dict["name"])
 # print(len(some_dict))
 
-# # БОГАТЫРСКИЙ КАМЕНЬ
+# БОГАТЫРСКИЙ КАМЕНЬ
 # decision = input("Enter direction: ").lower()
 # if decision == "left":
 #     print("Lose horse")
@@ -213,14 +237,28 @@ some_dict = {"name": "Nikolai",
 # elif decision == "straight":
 #     print("Lose mind")
 
-
-story_stone = {
-    "left": "Lose horse",
-    "right": "Lose life",
-    "straight": "Lose mind"
-}
+# def lose_horse():
+#     print("Я теряю коня")
+#     print("AHHJDSSDHSJHDV")
+#
+#
+# def lose_mind():
+#     print("Я теряю рассудок")
+#     print("sfgndthmdthmtyh ")
+#
+#
+# def lose_life():
+#     print("Я теряю жизнь")
+#     print("__________")
+#
+#
+# story_stone = {
+#     "left": lose_horse,
+#     "right": lose_mind,
+#     "straight": lose_life
+# }
 # decision = input("Enter direction: ").lower()
-# print(story_stone[decision])
+# print(story_stone[decision]())
 # print(story_stone.get(decision))  # ВАЖНО ПОНИМАТЬ РАЗНИЦУ
 # print(story_stone.keys())
 # print(story_stone.values())
@@ -231,22 +269,22 @@ story_stone = {
 # print(print(c, type(c)))
 #
 # """Exceptions - исключение. Нужны для обработки внештатных ситуаций"""
-try:
-    1 / 0
-except (TypeError, KeyError) as err:
-    print("Error!!!", err)
-
-
-a = 1
-b = 2
-# ТЕРНАРНЫЙ ОПЕРАТОР
-if a == 3:
-    result = 123
-else:
-    result = 5
-
-
-result = 123 if a == 3 else 5
+# try:
+#     1 / 0
+# except (TypeError, ZeroDivisionError) as err:
+#     print("Error!!!", err)
+#
+#
+# a = 1
+# b = 2
+# # ТЕРНАРНЫЙ ОПЕРАТОР
+# if a == 3:
+#     result = 123
+# else:
+#     result = 5
+#
+#
+# result = 123 if a == 3 else 5
 # print(result)
 #
 # """

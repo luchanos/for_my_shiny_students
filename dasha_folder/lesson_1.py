@@ -28,5 +28,5 @@ https://github.com/python/cpython - эталонный код CPython
 """
 
 # чтобы узнать, какой тип интерпретатора стоит на проекте:
-import platform
-print(platform.python_implementation())
+# import platform
+# print(platform.python_implementation())
