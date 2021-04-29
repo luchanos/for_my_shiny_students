@@ -140,33 +140,6 @@
 #     print(f"Ошибка {err}")
 
 
-from time import sleep
-
-condition = True
-break_condition = False
-continue_condition = False
-cnt = 0
-
-# while condition:  # какое-то условие
-#     sleep(.5)
-#     print("Это")
-#     print("Блок")
-#     print("Кода")
-#     print("В цикле")
-#     if break_condition:
-#         print("Выходим из цикла")
-#         break
-#     cnt += 1
-#     # if cnt == 10:
-#     #     break_condition = True
-#     # if cnt > 6:
-#     #     continue_condition = True
-#     # if continue_condition:
-#     #     print("Сразу идем на новую итерацию")
-#     #     continue
-#     # print("И кое-что в конце!")
-# else:
-#     print("Если вышли из цикла штатно")
 
 
 # condition = True
@@ -188,8 +161,9 @@ cnt = 0
 # l = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # print(l)
 
+# как на самом деле работе цикл for
 # шаг 1 - получить итератор от объекта который нужно проитерировать
-# шаг 2 - запускать функцию next от этого итератора
+# шаг 2 - запускать функцию next от этого итератора до возниконовения StopIteration error
 # i = iter(l)
 # print(i)
 # print(next(i))
@@ -216,6 +190,7 @@ cnt = 0
 # d = {k: str(v) * 3 for k, v in enumerate(range(10))}
 # print(d)
 
+# функция в зависимости от направления движения вернёт какое-то из значений события
 # def bogatyr_choice(direction="left"):
 #     if direction == "left":
 #         return "Horse loss!"
@@ -224,28 +199,24 @@ cnt = 0
 #     elif direction == "straight":
 #         return "Life loss!"
 
-
 # print(bogatyr_choice())
 
+
+# Никогда не передавайте в качестве дефолтного аргумента изменяемый тип!!
 # def some_f(a, l=[]):
 #     # if not l:
 #     #     l = []
 #     l.append(a)
 #     return l
 
-# def summarize(*args, **kwargs):
-#     return sum(args)
-
 def get_key(t):
     return t[1]
 
-
 # l = [(1, 0), (4, 5), (-100, -1000000)]
 # rst = summarize
-# lambda a, b: a + b
+
+# аналог get_key -> lambda t: t[1]
 # print(sorted(l, key=lambda t: t[1]))
-
-
 
 
 # [1, [...], [...]] - вот что будет при выводе
@@ -255,41 +226,19 @@ def get_key(t):
 # print(some_f(1))
 
 
-def outer(a):
-    def other_func(f):
-        print("Рекламное сообщение")
-        f(a)
-    return other_func
-
-
-@outer
-def my_shiny_func(a):
-    print(f"Я функция my_shiny_func с параметром {a}")
-
-
-# res = outer(2)(my_shiny_func)
-# my_shiny_func(2)
-
-
+# декоратор, который перед запуском функции печатает сообщение
 def param_wrapper(*args, **kwargs):
-
-
-
-
     def outer(f):
         def inner(*fargs, **fkwargs):
             print("Рекламное сообщение")
             f(*fargs, **fkwargs)
         return inner
-
-
-
-
     return outer
 
 
 @param_wrapper(1, 2, 3)
 def my_shiny_func(a):
     print(f"Я функция my_shiny_func с параметром {a}")
+
 
 my_shiny_func('тест')
