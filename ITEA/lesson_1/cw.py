@@ -43,7 +43,7 @@ PEP8
 - Functors, Currying:
 https://www.internet-technologies.ru/articles/i-opyat-o-funkcionalnom-programmirovanii-na-python.html
 По сути Currying это когда функция внутри функции
-https://www.youtube.com/watch?v=-ZY0KHGOQoY - материал по функцторам
+https://www.youtube.com/watch?v=-ZY0KHGOQoY - материал по функторам
 
 - Декораторы:
 Паттерн проектирования, который позволяет изменять поведение целевой функции без её переписывания.
