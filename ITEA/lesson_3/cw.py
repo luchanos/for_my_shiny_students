@@ -223,8 +223,8 @@ class MyIterableClass:
 
 
 my_example_obj = MyIterableClass(1)
-for el in my_example_obj:
-    print(el)
+# for el in my_example_obj:
+#     print(el)
 
 # Но я хочу расписать свое собственное правило итерации! Для этого я могу написать свой кастомный класс-итератор!
 
@@ -263,11 +263,25 @@ class MyIterableClassV2:
 
 
 my_example_obj = MyIterableClassV2(1)
-for el in my_example_obj:
-    print(el)
+# for el in my_example_obj:
+#     print(el)
 
 # кастомный итератор пишут нечасто, только если нужно управлять самим процессом итерации более жёстко
 # если нужно итерироваться "только вперёд", то тогда нам достаточно использовать объект-генератор
 
+
 def func_gen():
     yield 1
+
+
+class MyIterableClassV3(MyIterableClassV2):
+    def __getitem__(self, item):
+        return 1
+
+    def __setitem__(self, key, value):
+        print(f"Правило присваивания по ключу {key} значения {value}")
+
+
+my_example_obj = MyIterableClassV3(1)
+print(my_example_obj[3])
+my_example_obj[3] = 111
