@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Привет!</title>
+</head>
+<body>
+<h1>Пользователи:</h1>
+{% for user in users_list %}
+<p>
+<a href="/get_user/{{user}}">{{user}}</a>
+    users_list
+</p>
+{% endfor %}
+</body>
+</html>
