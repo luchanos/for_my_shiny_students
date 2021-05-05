@@ -1,14 +1,15 @@
-"""Doc strings
-Meta-классы
+"""Doc strings  DONE
+Meta-классы  Позже
 Abstract Bases-классы  DONE
-__new__
-__init__
-Context-managers
-Использованием декораторов с классами
+__new__  DONE
+__init__  DONE
+Context-managers  DONE
+Использованием декораторов с классами  DONE
 Контейнеры, созданные путем наследования (UserList, UserDict, UserString)
 Контейнеры, созданные путем агрегации
-Методы доступа к элементам контейнера
-Iterators, Generators"""
+Методы доступа к элементам контейнера  DONE
+Iterators, Generators  DONE
+"""
 
 #############################################################
 ######################## Doc strings ########################
@@ -276,12 +277,43 @@ def func_gen():
 
 class MyIterableClassV3(MyIterableClassV2):
     def __getitem__(self, item):
+        """Функция для получения элемента коллекции по индексу"""
         return 1
 
     def __setitem__(self, key, value):
+        """Функция для задания ключа и значения элемента в коллекции"""
         print(f"Правило присваивания по ключу {key} значения {value}")
 
 
 my_example_obj = MyIterableClassV3(1)
 print(my_example_obj[3])
 my_example_obj[3] = 111
+
+
+#############################################################
+################## Декораторы с классами ####################
+#############################################################
+
+
+# при обёртывании класса декоратором мы по сути просто вместо объекта-функции
+# передаём в него объект-класс
+def check_pass(password):
+    def outer(func):
+        def inner(*args, **kwargs):
+            if password == "secret_password":
+                return func(*args, **kwargs)
+            else:
+                raise ValueError("Wrong password!")
+        return inner
+    return outer
+
+
+@check_pass("secret_password")
+class MyClass:
+    pass
+
+
+exempl = MyClass()
+
+# декоратор не будет распространяться на наследников класса и в этом одна из фишек!
+# с помощью декоратора можно написать singletone
