@@ -11,3 +11,4 @@ six==1.15.0
 toml==0.10.2
 urllib3==1.26.2
 zipp==3.4.0
+django
