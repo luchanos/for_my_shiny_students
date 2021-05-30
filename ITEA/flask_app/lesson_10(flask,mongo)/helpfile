@@ -1,0 +1,8 @@
+Установка MongoDB:
+https://www.youtube.com/watch?v=xwr3azx0Gf0
+
+Для МАК:
+brew tap mongodb/brew
+brew install mongodb-community
+
+Если будут проблемы с коннектом, то поднимаем базу вот так: mongod --dbpath <путь к файлу где будем хранить данные>
