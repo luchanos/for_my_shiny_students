@@ -181,4 +181,3 @@ l = [seller.sell_ticket(**ticket_params) for ticket_params in ticket_data]
 for ticket in l:
     usabler.use_ticket(ticket)
 c = 1
-
