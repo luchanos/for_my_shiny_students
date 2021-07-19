@@ -11,7 +11,6 @@ class Tumbochka:
     def add_into(self, *args):
         print("Отправляю смс владельцу тумбочки")
         self.__content.extend(args)
-        c = 1
 
     def get_content(self):
         return self.__content
@@ -34,6 +33,14 @@ a = 1
 b = 2
 
 tumbochka = Tumbochka()
+tumbochka.add_into(1, 2, 3, 4, 5)
+
+c = iter(tumbochka)
+print(c)
+
+for el in tumbochka:
+    print(el)
+
 # tumbochka.content.extend([l1, l0, a, b])
 # tumbochka.content = tumbochka.content + [l1, l0, a, b]
 # print(tumbochka.content)
@@ -71,9 +78,9 @@ class MiniTumbochka(Tumbochka):
         return self.__content
 
 
-mini = MiniTumbochka()
-mini.add_into(1, 2, 3)
-# print(mini.get_content())
-# print(mini.show_mini_content())
-print(mini._MiniTumbochka__content)
-print(mini._Tumbochka__content)
+# mini = MiniTumbochka()
+# mini.add_into(1, 2, 3)
+# # print(mini.get_content())
+# # print(mini.show_mini_content())
+# print(mini._MiniTumbochka__content)
+# print(mini._Tumbochka__content)

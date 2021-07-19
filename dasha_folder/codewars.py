@@ -14,4 +14,6 @@ https://www.codewars.com/kata/55685cd7ad70877c23000102
 СТРОКИ
 Строка с приветствием:
 https://www.codewars.com/kata/55a70521798b14d4750000a4/solutions/python
+
+https://www.codewars.com/kata/57a0556c7cb1f31ab3000ad7
 """
