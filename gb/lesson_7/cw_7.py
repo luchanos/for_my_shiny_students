@@ -1,10 +1,5 @@
-from typing import List
-from time import sleep
-from datetime import datetime
 import requests
 from abc import ABC, abstractmethod
-
-from lesson_6.cw_6 import Pistolet
 
 
 class MyShinyIterator:
@@ -199,9 +194,6 @@ c = 1
 ###################################
 ############ ИТЕРАТОРЫ ############
 ###################################
-
-import sys
-from itertools import repeat, count
 
 # Итерируемые объекты (iterable) — это любые объекты, предоставляющий возможность поочерёдного прохода по циклу.
 from time import sleep

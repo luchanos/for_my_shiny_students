@@ -1,4 +1,4 @@
-from lesson_4.homework.hw_4_1 import salary
+from gb.lesson_4.homework.hw_4_1 import salary
 import pytest
 
 
