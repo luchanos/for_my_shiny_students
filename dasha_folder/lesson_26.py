@@ -31,7 +31,7 @@ curl 'https://www.avito.ru/web/3/suggest' \
 # /web/3/suggest - эндпойнт или URI
 # доменное имя + URI = URL
 
-# url = 'https://api.telegram.org/bot1818338603:AAEv3AOttf2NqRSSphapItXr-ADv3sbL0tM/sendMessage?chat_id=362857450&text=test_message'
+# url = 'https://api.telegram.org/bot1818338603:AAEv3AOttf2NqRSSphapItXr-ADv3sbL0tM/sendMessage?chat_id=362857450&text=test_message2'
 
 # библиотека PyTelegramBotAPI
 from telebot import TeleBot
@@ -73,4 +73,5 @@ def quiz(message):
     bot.register_next_step_handler(message, get_pirozhok)
 
 
-bot.polling()
+if __name__ == "__main__":
+    bot.polling()
