@@ -31,7 +31,7 @@ curl 'https://www.avito.ru/web/3/suggest' \
 # /web/3/suggest - эндпойнт или URI
 # доменное имя + URI = URL
 
-# url = 'https://api.telegram.org/bot1818338603:AAEv3AOttf2NqRSSphapItXr-ADv3sbL0tM/sendMessage?chat_id=362857450&text=test_message2'
+# url = 'https://api.telegram.org/bot1828225550:AAG1HGag7J2Qjlv92GNA_YcfLbupyPGNV2E/sendMessage?chat_id=362857450&text=test_message2'
 
 # библиотека PyTelegramBotAPI
 from telebot import TeleBot

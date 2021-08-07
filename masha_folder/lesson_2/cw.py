@@ -19,13 +19,13 @@ todo luchanos посмотреть дозапись в json-файл
 from telebot import TeleBot
 from random import choice
 
-TOKEN = "1828225550:AAG1HGag7J2Qjlv92GNA_YcfLbupyPGNV2E"
-# book_storage = []
-book_storage = [{'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
-                {'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
-                {'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
-                {'книга': 'Набоков. Отчаяние', 'добавил': 'Maria Sviridova'},
-                {'книга': 'Набоков. Приглашение на казнь', 'добавил': 'Maria Sviridova'}]
+TOKEN = "1804878764:AAEJc8FAgAaVJHm4xyYDNtizWLhmCk6zxPg"
+book_storage = []
+# book_storage = [{'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
+#                 {'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
+#                 {'книга': 'Пушкин. Капитанская дочка', 'добавил': 'Nikolas Luchanos'},
+#                 {'книга': 'Набоков. Отчаяние', 'добавил': 'Maria Sviridova'},
+#                 {'книга': 'Набоков. Приглашение на казнь', 'добавил': 'Maria Sviridova'}]
 
 bot = TeleBot(TOKEN)
 

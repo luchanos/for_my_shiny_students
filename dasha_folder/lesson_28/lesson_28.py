@@ -29,6 +29,7 @@ def delete_product_by_id(product_id):
         connect.commit()
 
 
-get_all_products(19)
-insert_new_product('Макароны2', 500)
-delete_product_by_id(4)
+if __name__ == '__main__':
+    get_all_products(19)
+    insert_new_product('Макароны2', 500)
+    delete_product_by_id(4)

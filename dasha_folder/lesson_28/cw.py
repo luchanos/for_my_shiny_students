@@ -1,6 +1,8 @@
 """Добавить в приложение функционал по получению продуктов и удалению продуктов по id из
 консоли по аналогии с добавлением новых продуктов. Не забыть слать оповещения пользователю
-при этом ;)"""
+при этом в Телеграмм ;)
+
+Тот же самый функционал - удаление и получение реализовать уже посредством использования telebot."""
 
 import psycopg2
 import requests
@@ -28,13 +30,13 @@ class MyDbClient:
             return
 
     def get_products(self, limit):
-        """Получает заданное количество записей из таблица products"""
+        """Получает заданное количество записей из таблицы products"""
         self._check_connection()
         with self.connect.cursor() as cursor:
             cursor.execute(self.PRODUCT_SELECT_QUERY % limit)
             return cursor.fetchall()
 
-    def insert_new_product(self, description, quantity):
+    def create_new_product(self, description, quantity):
         """Создаёт новый продукт в таблице products"""
         self._check_connection()
         with self.connect.cursor() as cursor:
@@ -67,13 +69,17 @@ class MyApplication:
     def setup_all_components(self):
         self.db_client.setup()
 
+    def notify(self, message):
+        print(message)
+        self.tg_client.send_text_message(message)
+
     def create_new_product(self):
         params = dict()
         params['description'] = input("Enter description: ")
         params['quantity'] = int(input("Enter quantity: "))
-        self.db_client.insert_new_product(**params)
+        self.db_client.create_new_product(**params)
         message = f"New product: {params} has been created"
-        self.tg_client.send_text_message(message)
+        self.notify(message)
 
     def run(self):
         self.setup_all_components()
@@ -93,7 +99,8 @@ class MyApplication:
                 print("Вы ввели что-то не то, попробуйте ещё раз! ")
 
 
-my_tg_client = MyTgClient(TOKEN, [362857450, 308251648])
-my_db_client = MyDbClient(DB_URL)
-my_application = MyApplication(db_client=my_db_client, tg_client=my_tg_client)
-my_application.run()
+if __name__ == "__main__":
+    my_tg_client = MyTgClient(TOKEN, [362857450, 308251648])
+    my_db_client = MyDbClient(DB_URL)
+    my_application = MyApplication(db_client=my_db_client, tg_client=my_tg_client)
+    my_application.run()
