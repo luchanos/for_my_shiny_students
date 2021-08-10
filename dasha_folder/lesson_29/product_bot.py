@@ -13,7 +13,7 @@ my_db_client.setup()
 
 
 @bot.message_handler(commands=["get_products_with_limit"], content_types=["text"])
-def get_product_by_id(message):
+def get_products_with_limit(message):
     limit = int(message.text.split()[1])
     products = my_db_client.get_products(limit)
     answer_message = "Reuslt: \n"

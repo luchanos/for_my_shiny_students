@@ -14,7 +14,7 @@ DB_URL = "postgresql://newuser:qwerty@localhost:5432/postgres"
 
 class MyDbClient:
     PRODUCT_SELECT_QUERY = "SELECT * FROM products LIMIT %d"
-    PRODUCT_INSERT_QUERY = "INSERT INTO products (description, quantity) VALUES ('%s', %d)"
+    PRODUCT_INSERT_QUERY = "INSERT INTO products (description, quantity) VALUES ('%s', %d) RETURNING product_id"
     PRODUCT_DELETE_BY_ID_QUERY = "DELETE FROM products WHERE product_id = %d"
 
     def __init__(self, db_url):
@@ -23,6 +23,7 @@ class MyDbClient:
 
     def setup(self):
         self.connect = psycopg2.connect(self.db_url)
+        print(" * MyDbClient has been set up!")
 
     def _check_connection(self):
         if not self.connect:
@@ -42,6 +43,7 @@ class MyDbClient:
         with self.connect.cursor() as cursor:
             cursor.execute(self.PRODUCT_INSERT_QUERY % (description, quantity))
             self.connect.commit()
+            return cursor.fetchone()[0]
 
     def delete_product_by_id(self, product_id):
         """Удаляет продукт в таблице products"""
