@@ -5,6 +5,7 @@ import requests
 app = Flask("products_app_b2b")
 
 
+
 @app.route("/create_new_product_b2b", methods=["POST", "GET"])
 def create_new_product_via_b2b():
     custom_data = {"description": "b2b_product3", "quantity": 100}
