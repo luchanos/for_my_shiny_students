@@ -10,6 +10,4 @@ def substring(strng):
         pass
 
 
-
-
 substring("aaaabcbcbcsssgsfvsd")
