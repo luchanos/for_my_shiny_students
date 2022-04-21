@@ -1,25 +1,17 @@
 def cook_book_made(file):
-    """
-    Задача № 1
-    """
-    cook_book = dict()
-    cook_recipe = {}
-    cook_ingridients = {}
-
-    with open(file, encoding='utf-8') as recipes:
-        for line in recipes:
-            cook_recipe[line.strip()] = []
-            for i in range(int(recipes.readline().strip())):
-                cook_ingridients['ingredient_name'], cook_ingridients['quantity'], cook_ingridients['measure'] = \
-                    recipes.readline().strip().split('|')
-                cook_ingridients['quantity'] = int(cook_ingridients['quantity'])
-                for k in cook_recipe.keys():
-                    cook_recipe[k].append(cook_ingridients)
-                cook_ingridients = dict()
-            cook_book = cook_book | cook_recipe
-            cook_recipe = dict()
-            recipes.readline()
-    return cook_book
+    '''This is general function'''
+    with open(file, 'r', encoding="UTF-8") as f:
+        cook_book = dict()
+        for line in f:
+            name = line.rstrip()
+            value = int(f.readline()) + 1
+            list_ingredients = list()
+            for i in range(1, value):
+                ingredient_name, quantity, measure =(f.readline().rstrip().replace(' ', '').split('|'))
+                list_ingredients.append({'ingredient_name' : ingredient_name, 'quantity' : quantity, 'measure' : measure})
+                cook_book[name] = list_ingredients
+            f.readline()
+        return cook_book
 
 
 cook_book = {
@@ -48,27 +40,52 @@ cook_book = {
 
 
 def test_cook_book_made():
-    res = cook_book_made('recipes.txt')
+    res = cook_book_made('7/in_book.txt')
     assert cook_book == res
 
 
-def get_shop_list_by_dishes(dishes: list, person_count: int):
-    """
-        Задача № 2
-    """
-    product_basket = {}
-    for dish in dishes:
-        if dish in cook_book:
-            for item in range(len(cook_book[dish])):
-                if cook_book[dish][item]['ingredient_name'] not in product_basket:
-                    product_basket.setdefault(cook_book[dish][item]['ingredient_name'],
-                                              {'measure': cook_book[dish][item]['measure'],
-                                               'quantity': cook_book[dish][item]['quantity'] * person_count})
-                else:
-                    product_basket[cook_book[dish][item]['ingredient_name']]['quantity'] += \
-                        cook_book[dish][item]['quantity'] * person_count
+def get_shop_list_by_dishes(dishes, person):
+    cook_book = {
+        'Омлет': [
+            {'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт.'},
+            {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
+            {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}
+        ],
+        'Утка по-пекински': [
+            {'ingredient_name': 'Утка', 'quantity': 1, 'measure': 'шт'},
+            {'ingredient_name': 'Вода', 'quantity': 2, 'measure': 'л'},
+            {'ingredient_name': 'Мед', 'quantity': 3, 'measure': 'ст.л'},
+            {'ingredient_name': 'Соевый соус', 'quantity': 60, 'measure': 'мл'}
+        ],
+        'Запеченный картофель': [
+            {'ingredient_name': 'Картофель', 'quantity': 1, 'measure': 'кг'},
+            {'ingredient_name': 'Чеснок', 'quantity': 3, 'measure': 'зубч'},
+            {'ingredient_name': 'Сыр гауда', 'quantity': 100, 'measure': 'г'},
+        ]
+    }
+    #dishes = []
+    #name = 'Омлет'
+    value = len(dishes)
+    ingridients_dict = dict()
+    ingridients = []
 
-    return product_basket
+    for dish in dishes:
+      for i in cook_book:
+        if i == dish:
+            x_1 = cook_book.get(dish)
+            for i_1 in x_1:
+                ingridients.append(i_1)
+
+    for i in ingridients:
+        ing_name = i.get('ingredient_name')
+        ingridients_dict[ing_name] = i
+    for i in ingridients_dict.values():
+        i.pop('ingredient_name')
+
+    for i in ingridients_dict.values():
+        i['quantity'] *= person
+
+    return ingridients_dict
 
 
 def test_get_shop_list_by_dishes():
