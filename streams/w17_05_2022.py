@@ -54,8 +54,3 @@ if __name__ == "__main__":
     # print(func_name(param_1, param_2, 123, func_with_param, k=678, some_key_arg=100, some_key_arg_2=1000))
     # print(func_name(param_1, param_2, 123, func_without_param, 678, some_key_arg=100, some_key_arg_2=1000))
     print(func_name(func_with_param, k=678, some_key_arg=100, some_key_arg_2=1000))
-
-
-
-
-
