@@ -126,8 +126,18 @@ except TypeError:
     print("Добавь звезду!")
 
 """
-######## Medium #########
+######## HARD #########
 """
 
 
+def hard_sum_func(one, two, three, four, *args, **kwargs):
+    summarize = one + two + three + four
+    if args:
+        summarize += sum(args[:2])
+    if kwargs:
+        summarize += list(kwargs.values())[0]
+    return summarize
 
+ar = [2, 2, 2]
+dc = {'five': 6, 'six': 5}
+print(hard_sum_func(1, 1, 1, 1, *ar, **dc))
