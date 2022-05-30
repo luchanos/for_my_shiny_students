@@ -26,10 +26,8 @@
 """
 
 """
-######## Блок 1 #########
+######## EASY #########
 """
-
-# EASY
 
 # 1. Создана функция суммирования
 
@@ -49,18 +47,87 @@ print(any_variable)
 print(any_variable(2, 3))
 
 
-# Medium
+"""
+######## Medium #########
+"""
 
 # 1. Создана функция суммирования
 
 
-def easy_sum_func(first, second):
-    return first + second
+def medium_sum_func(*args):
+    return sum(args)
 
 
-# 2. Результат: <function easy_sum_func at 0x00000182258AA4C0>
+# 2. Объявлена функция с 4 обязательными аргументами и сколько угодно
+# дополнительными аргументов
 
-any_variable = easy_sum_func
-print(any_variable)
+def medium_sum_func_2(one, two, three, four, *args, **kwargs):
+    summarize = one + two + three + four
+    if args:
+        summarize += sum(args)
+    if kwargs:
+        summarize += sum(kwargs.values())
+    return summarize
+
+
+# 2.1 Если передан только 1 из 4х обязательных аргументов,
+# ошибка TypeError
+
+
+try:
+    medium_sum_func_2(1)
+except TypeError:
+    print(
+        "TypeError: medium_sum_func_2() missing 3 required positional" +
+        "arguments: 'two', 'three', and 'four'")
+
+# 2.2 Позиционный аргумент был передан 2 раза
+# (по ключу и позиционно) - ошибка TypeError
+
+try:
+    medium_sum_func_2(1, 2, 3, 4, one=5)
+except TypeError:
+    print(
+        "TypeError: medium_sum_func_2() got multiple " +
+        "values for argument 'one'")
+
+# 2.3 Cоздать кортеж со значениями и распаковать его при вызове функции с помощью *
+
+# Функция отработает в штатном режиме, т.к.
+# количество распакованных элементов > позиционных
+some_tuple = (1, 2, 3, 4, 5, 6)
+print(medium_sum_func_2(*some_tuple))
+
+# Функция выкинет ошибку, т.к.
+# количество распакованных элементов не соответствует позиционным
+some_tuple = (1, 2, 3)
+try:
+    print(medium_sum_func_2(*some_tuple))
+except TypeError:
+    print("Что то пошло не так")
+
+# 2.4 Cоздать словарь со значениями и распаковать его при вызове функции
+some_dict = {
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5
+}
+
+# Все идет по плану, словарь успешно распакован и просуммирован
+print(medium_sum_func_2(**some_dict))
+
+# Все пропало - TypeError! Словарь распакованный одной звездочкой
+# возвращает ключи словаря
+try:
+    print(medium_sum_func_2(*some_dict))
+except TypeError:
+    print("Добавь звезду!")
+
+"""
+######## Medium #########
+"""
+
 
 
