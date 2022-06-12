@@ -73,7 +73,6 @@ def my_shiny_func():
 
 
 def deco(f):
-    c = 1
     def inner(*args, **kwargs):
         print("Покупайте наших котят")
         return f(*args, **kwargs)
