@@ -20,8 +20,8 @@ class Tiger:
 
 
 # print(Tiger)
-# my_tiger = Tiger()
-# print(my_tiger)
+my_tiger = Tiger(1, 2, 3)
+print(my_tiger)
 #
 # tiger_list = [Tiger() for _ in range(10)]
 # print(tiger_list)
@@ -175,9 +175,9 @@ ticket_data = [
     },
 ]
 
-seller = TicketSeller()  # создал продавателя билетов
-usabler = TicketUsabler()
-l = [seller.sell_ticket(**ticket_params) for ticket_params in ticket_data]
-for ticket in l:
-    usabler.use_ticket(ticket)
-c = 1
+# seller = TicketSeller()  # создал продавателя билетов
+# usabler = TicketUsabler()
+# l = [seller.sell_ticket(**ticket_params) for ticket_params in ticket_data]
+# for ticket in l:
+#     usabler.use_ticket(ticket)
+# c = 1

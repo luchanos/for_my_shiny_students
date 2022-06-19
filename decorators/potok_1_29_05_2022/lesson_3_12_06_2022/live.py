@@ -51,7 +51,6 @@ def adv(f):
 
 # my_shiny_func = deco(my_shiny_func)
 
-c = 1
 
 
 # @deco(msg="Моё сообщение")  # тут вернется вложенная функция deco_2, которая и будет являться декоратором для f
@@ -67,6 +66,7 @@ c = 1
 # m_test_func_2 = deco(m_test_func, "Мое сообщение")  # НЕ ДЕЛАЙТЕ ТАК!
 # m_test_func_2 = deco("Моё сообщение")
 # print(m_test_func_2)
+
 
 @retry
 @adv
