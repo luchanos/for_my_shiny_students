@@ -138,6 +138,7 @@ def hard_sum_func(one, two, three, four, *args, **kwargs):
         summarize += list(kwargs.values())[0]
     return summarize
 
+
 ar = [2, 2, 2]
 dc = {'five': 6, 'six': 5}
 print(hard_sum_func(1, 1, 1, 1, *ar, **dc))
